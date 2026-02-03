@@ -1,0 +1,78 @@
+Biotin supplements are often marketed to consumers for their potential to improve hair
+regrowth, brittle nails, and skin rashes because of their role in cell growth and metabolism.
+While biotin supplementation may improve pathologic hair and nail syndromes in patients who
+have laboratory-proven deficiencies in vitamin B7, there are limited data on the efficacy of
+biotin supplementation in treating common hair loss and nail disorders, with merely one
+clinical trial to date.1 Although there was an observed increase in hair density and subjective
+differences in hair shedding, strength, breakage, and brightness after biotin supplementation,
+this study is limited by its single-institution setting and small sample size that relied on subject
+perception through self-assessment questionnaires.1 Despite biotin’s rise in social media
+popularity, few studies support its efficacy.2
+Patients who are undergoing treatment for cancer may experience hair and nail changes
+secondary to chemotherapeutic and endocrine agents. Hair loss has been identified as one of the
+most emotionally distressing side effects of chemotherapy for many patients. Among breast
+cancer survivors, hair loss/thinning was reported as the most severe symptom experienced
+during the first year after diagnosis.3 Furthermore, in another survey of patients with breast
+cancer, 53% noted hair loss as the most emotionally distressing part of chemotherapy.4 As
+patients navigate these changes, marketing for biotin supplements promise potential for hair
+and nail regrowth. Biotin is also an ingredient in popular oral products such as Nutrafol and
+Viviscal. In a study conducted on patients in cancer support Facebook groups, patients were
+most likely to have tried an oral supplement for hair regrowth—surpassing all topical treatment
+options.5 Compared with topical products, biotin supplements are easier to administer and may
+be more economical.1 Furthermore, merely 6% reported speaking to their oncologist or der-
+matologist about hair and nail growth concerns.5
+Importantly, biotin has been shown to interfere with several laboratory tests, including those
+used for monitoring cancer progression and treatment outcomes. This occurs because biotin
+affects streptavidin-biotin binding used in many immunoassays. When present in excess, biotin
+competes with biotinylated antibodies or antigens for binding to streptavidin-coated magnetic
+surfaces, resulting in reduced capture of the biotinylated antibodies or antigens.6 This ulti-
+mately leads to falsely elevated results in competitive immunoassays and falsely low results in
+noncompetitive, or sandwich, immunoassays.6,7 These inaccurate laboratory results may delay
+or alter patients’ treatment plans.
+Studies have shown that biotin has the potential to affect laboratory tests used for thyroid,
+breast, endometrial, ovarian, germ cell, paraneoplastic, and prostate cancers. Researchers
+found that a single dose of biotin ingestion (eg, 10-300 mg once daily) in healthy volunteers can
+interfere with selected laboratory tests including free thyroxine (T4), free triiodothyronine
+(T3), thyroglobulin, dehydroepiandrosterone sulfate, estradiol, testosterone, ferritin, pro-
+gesterone, prostate-specific antigen (PSA), parathyroid hormone, luteinizing hormone, and
+follicle-stimulating hormone.6,8 By binding to streptavidin-coated detection systems, biotin
+can lead to falsely low results in sandwich assays (eg, TSH and PSA) and falsely high results in
+competitive assays (eg, estradiol and testosterone).6 These inaccurate results are clinically
+significant for many reasons: falsely low TSH levels can lead to misdiagnosis of hyperthy-
+roidism or misinterpretation during immunotherapy; falsely elevated estradiol may delay the
+initiation of endocrine therapy in postmenopausal patients with breast cancer; and artificially
+low PSA may mask recurrence in prostate cancer survivors.
+
+Alternatively, oncologists could consider topical minoxidil
+as a safe and effective treatment option for patients with
+cancer experiencing hair loss.9 With no known contrain-
+dications in oncology patients and minimal side effects,
+minoxidil is generally well tolerated and affordable,
+with over-the-counter formulations averaging $21.87 US
+dollars (USD) per 60 mL for women and $20.62 USD per
+60 mL for men.10,11 In one randomized controlled trial,
+87.5% of patients using 5% topical minoxidil experienced
+significant improvement of hair regrowth after chemo-
+therapy compared with 55% in the placebo group.12
+When counseling patients with cancer who are interested in
+hair and nail regrowth, oncologists should be familiar with
+biotin’s interference with immunoassay-based laboratory
+tests.4 Patients taking high-dose biotin supplementation
+(>100 mg/day once daily) should undergo a minimum of a
+2- to 3-day washout period before blood collection to
+minimize error in laboratory results.5,7 In addition, oncol-
+ogists should consider the lack of scientific evidence for
+biotin supplementation in promoting hair and nail regrowth.
+Finally, the American Academy of Dermatology has released
+a cautionary statement sharing their agreement that biotin
+supplementation should not be used as a primary treatment
+option for hair or nail regrowth.13 Importantly, there is no
+evidence from peer-reviewed studies suggesting that biotin
+increases the risk of cancer recurrence or progression. The
+main concern regarding its use in this population is the lack
+of proven efficacy, interference with certain laboratory tests,
+and the availability of better-supported alternatives such as
+topical minoxidil. Our call to action is for oncologists to ask
+patients about how they are treating any dermatologic side
+effects and to offer caution to patients considering starting
+oral supplements.
