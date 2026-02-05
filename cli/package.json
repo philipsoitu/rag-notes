@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/cli.ts",
+    "rag-notes": "bun run src/cli.ts"
+  }
+}

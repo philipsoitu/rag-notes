@@ -21,11 +21,8 @@
         devShells.default = pkgs.mkShell {
           packages = [
             pkgs.bun
+            pkgs.ollama
           ];
-
-          shellHook = ''
-            echo "Bun $(bun --version) ready"
-          '';
         };
       }
     );
