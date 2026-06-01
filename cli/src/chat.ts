@@ -5,7 +5,7 @@ import { Ollama } from "@langchain/ollama";
 
 export async function chatLoop() {
   const llm = new Ollama({
-    model: process.env.OLLAMA_CHAT_MODEL || "qwen2.5:3b",
+    model: process.env.OLLAMA_CHAT_MODEL || "granite4.1:3b",
     temperature: 0.2,
   });
 
@@ -16,16 +16,16 @@ export async function chatLoop() {
     output: process.stdout,
   });
 
-  const ask = (q: string) =>
-    new Promise<string>((res) => rl.question(q, res));
+  const ask = (q: string) => new Promise<string>((res) => rl.question(q, res));
 
-  // simple per-session state
   const state = {
     k: 6,
-    minScore: -1, // cosine sim can be negative; keep everything by default
+    minScore: -1, // cosine sim can be negative
   };
 
-  console.log("RAG Notes — local chat. Type /exit to quit. Type /help for commands.");
+  console.log(
+    "RAG Notes — local chat. Type /exit to quit. Type /help for commands.",
+  );
 
   while (true) {
     const q = (await ask("\n> ")).trim();
@@ -42,7 +42,7 @@ export async function chatLoop() {
           "  /k N                  Set retrieval count (default 6, max 30)",
           "  /minscore X           Filter retrieved chunks by similarity score (default -1)",
           "  /stats                Show chunk/vector counts",
-        ].join("\n")
+        ].join("\n"),
       );
       continue;
     }
@@ -50,28 +50,31 @@ export async function chatLoop() {
     if (q === "/sources") {
       const rows = db
         .prepare(
-          "SELECT id, filepath, added_at FROM source_files ORDER BY added_at DESC"
+          "SELECT id, filepath, added_at FROM source_files ORDER BY added_at DESC",
         )
         .all() as Array<{ id: number; filepath: string; added_at: string }>;
 
       if (!rows.length) console.log("(no sources)");
-      else rows.forEach((r) => console.log(`#${r.id}  ${r.filepath}  (${r.added_at})`));
+      else
+        rows.forEach((r) =>
+          console.log(`#${r.id}  ${r.filepath}  (${r.added_at})`),
+        );
       continue;
     }
 
     if (q === "/stats") {
-      const c = db
-        .prepare("SELECT COUNT(*) AS n FROM chunks")
-        .get() as { n: number } | null;
-      const e = db
-        .prepare("SELECT COUNT(*) AS n FROM embeddings")
-        .get() as { n: number } | null;
-      const s = db
-        .prepare("SELECT COUNT(*) AS n FROM source_files")
-        .get() as { n: number } | null;
+      const c = db.prepare("SELECT COUNT(*) AS n FROM chunks").get() as {
+        n: number;
+      } | null;
+      const e = db.prepare("SELECT COUNT(*) AS n FROM embeddings").get() as {
+        n: number;
+      } | null;
+      const s = db.prepare("SELECT COUNT(*) AS n FROM source_files").get() as {
+        n: number;
+      } | null;
 
       console.log(
-        `sources=${s?.n ?? 0}  chunks=${c?.n ?? 0}  embeddings=${e?.n ?? 0}`
+        `sources=${s?.n ?? 0}  chunks=${c?.n ?? 0}  embeddings=${e?.n ?? 0}`,
       );
       continue;
     }
@@ -98,7 +101,7 @@ export async function chatLoop() {
 
     const contextBlocks = retrieved.map(
       (r, i) =>
-        `[#${i + 1}] (${r.filepath} — chunk ${r.chunkIndex}, score ${r.score.toFixed(3)})\n${r.content}`
+        `[#${i + 1}] (${r.filepath} — chunk ${r.chunkIndex}, score ${r.score.toFixed(3)})\n${r.content}`,
     );
 
     const context = contextBlocks.join("\n\n");
@@ -123,10 +126,14 @@ export async function chatLoop() {
       console.log("\nSources:");
       for (let i = 0; i < retrieved.length; i++) {
         const r = retrieved[i];
-        console.log(`- [#${i + 1}] ${r.filepath} (chunk ${r.chunkIndex}, score ${r.score.toFixed(3)})`);
+        console.log(
+          `- [#${i + 1}] ${r.filepath} (chunk ${r.chunkIndex}, score ${r.score.toFixed(3)})`,
+        );
       }
     } else {
-      console.log("\n(no relevant chunks retrieved — try ingesting more notes, or lower /minscore)");
+      console.log(
+        "\n(no relevant chunks retrieved — try ingesting more notes, or lower /minscore)",
+      );
     }
   }
 

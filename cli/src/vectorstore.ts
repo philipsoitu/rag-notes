@@ -2,7 +2,7 @@ import { openDb } from "./db";
 import { OllamaEmbeddings } from "@langchain/ollama";
 
 export const embeddings = new OllamaEmbeddings({
-  model: process.env.OLLAMA_EMBED_MODEL || "nomic-embed-text",
+  model: process.env.OLLAMA_EMBED_MODEL || "granite-embedding:278m",
 });
 
 export type RetrievedChunk = {
@@ -47,7 +47,7 @@ export async function embedTexts(texts: string[]): Promise<number[][]> {
 export function upsertEmbedding(chunkId: string, vector: number[]) {
   const db = openDb();
   db.prepare(
-    "INSERT OR REPLACE INTO embeddings (chunk_id, vector_json) VALUES (?, ?)"
+    "INSERT OR REPLACE INTO embeddings (chunk_id, vector_json) VALUES (?, ?)",
   ).run(chunkId, JSON.stringify(vector));
 }
 
@@ -57,12 +57,14 @@ export function upsertEmbedding(chunkId: string, vector: number[]) {
 export function deleteEmbeddingsForSource(sourceFileId: number) {
   const db = openDb();
   // Join chunks -> embeddings
-  db.prepare(`
+  db.prepare(
+    `
     DELETE FROM embeddings
     WHERE chunk_id IN (
       SELECT id FROM chunks WHERE source_file_id = ?
     )
-  `).run(sourceFileId);
+  `,
+  ).run(sourceFileId);
 }
 
 /**
@@ -70,12 +72,17 @@ export function deleteEmbeddingsForSource(sourceFileId: number) {
  * This loads vectors from SQLite and computes similarity in JS.
  * Good enough for notes-scale corpora; fully offline; zero native deps.
  */
-export async function similaritySearch(query: string, topK = 6): Promise<RetrievedChunk[]> {
+export async function similaritySearch(
+  query: string,
+  topK = 6,
+): Promise<RetrievedChunk[]> {
   const db = openDb();
   const qVec = await embedText(query);
 
   // Pull candidate chunks + vectors
-  const rows = db.prepare(`
+  const rows = db
+    .prepare(
+      `
     SELECT
       c.id AS chunkId,
       c.content AS content,
@@ -86,7 +93,9 @@ export async function similaritySearch(query: string, topK = 6): Promise<Retriev
     FROM embeddings e
     JOIN chunks c ON c.id = e.chunk_id
     JOIN source_files sf ON sf.id = c.source_file_id
-  `).all() as Array<{
+  `,
+    )
+    .all() as Array<{
     chunkId: string;
     content: string;
     chunkIndex: number;
@@ -96,7 +105,7 @@ export async function similaritySearch(query: string, topK = 6): Promise<Retriev
   }>;
 
   // Score
-  const scored: RetrievedChunk[] = rows.map(r => {
+  const scored: RetrievedChunk[] = rows.map((r) => {
     let vec: number[] = [];
     try {
       vec = JSON.parse(r.vectorJson);
