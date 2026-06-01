@@ -1,6 +1,8 @@
 # dependencies (bun install)
 node_modules
 
+.chroma/
+
 # output
 out
 dist

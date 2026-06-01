@@ -22,6 +22,8 @@
           packages = [
             pkgs.bun
             pkgs.ollama-vulkan
+            pkgs.python313Packages.chromadb
+            pkgs.lsof
           ];
         };
       }
